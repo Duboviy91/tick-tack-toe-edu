@@ -2,7 +2,7 @@
 
 ### Plan for future
 
- - [ ] Migrate to gradle build system
+ - [x] Migrate to gradle build system
  - [ ] Add Android app
  - [ ] Play with computer
    - [ ] Bot with random strategy
