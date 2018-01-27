@@ -8,12 +8,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class TickTackToeMain extends JFrame{
+public class TickTackToeMain extends JFrame {
     public TickTackToeMain() {
         this("My Frame");
     }
 
-    public TickTackToeMain(String title){
+    public TickTackToeMain(String title) {
         super(title);
 
         setContentPane(new DrawPane());
@@ -22,27 +22,27 @@ public class TickTackToeMain extends JFrame{
 
         setSize(400, 400);
 
-        setVisible(true); 
+        setVisible(true);
     }
 
     private class DrawPane extends JPanel {
-        private int getWinner(){
-            for(int i = 0; i < 3; i++){
-                if(map[i][0]==map[i][1]&&map[i][1]==map[i][2]){
+        private int getWinner() {
+            for (int i = 0; i < 3; i++) {
+                if (map[i][0] == map[i][1] && map[i][1] == map[i][2]) {
                     return map[i][0];
                 }
             }
             for (int j = 0; j < 3; j++) {
-                if(map[0][j]==map[1][j]&&map[1][j]==map[2][j]){
+                if (map[0][j] == map[1][j] && map[1][j] == map[2][j]) {
                     return map[0][j];
                 }
             }
-            if(map[0][0]==map[1][1]&&map[1][1]==map[2][2]){
+            if (map[0][0] == map[1][1] && map[1][1] == map[2][2]) {
                 return map[0][0];
-            }else if (map[0][2]==map[1][1]&&map[1][1]==map[2][0]) {
+            } else if (map[0][2] == map[1][1] && map[1][1] == map[2][0]) {
                 return map[0][2];
-            }else {
-                for(int i = 0; i < 3; i++) {
+            } else {
+                for (int i = 0; i < 3; i++) {
                     for (int j = 0; j < 3; j++) {
                         if (map[i][j] == 0) {
                             return 0;
@@ -55,29 +55,30 @@ public class TickTackToeMain extends JFrame{
 
         int[][] map = new int[3][3];
         int nextPlayer = 1;
+
         DrawPane() {
             addMouseListener(new MouseAdapter() {
 
                 @Override
-                public void mouseReleased(MouseEvent e) {                    
+                public void mouseReleased(MouseEvent e) {
                     System.out.println("mouseReleased");
-                    int i = 0;                    
+                    int i = 0;
                     if (e.getX() < getWidth() / 3) {
                         i = 0;
-                    }else if (e.getX() > getWidth() / 3 && e.getX() < getWidth() * 2 / 3) {
-                        i = 1;                        
-                    }else if (e.getX() > getWidth() * 2 / 3) {
-                        i = 2;                        
+                    } else if (e.getX() > getWidth() / 3 && e.getX() < getWidth() * 2 / 3) {
+                        i = 1;
+                    } else if (e.getX() > getWidth() * 2 / 3) {
+                        i = 2;
                     }
                     int j = 0;
                     if (e.getY() < getHeight() / 3) {
                         j = 0;
-                    }else if (e.getY() > getHeight() / 3 && e.getY() < getHeight() * 2 / 3) {
-                        j = 1;                        
-                    }else if (e.getY() > getHeight() * 2 / 3) {
-                        j = 2;                        
+                    } else if (e.getY() > getHeight() / 3 && e.getY() < getHeight() * 2 / 3) {
+                        j = 1;
+                    } else if (e.getY() > getHeight() * 2 / 3) {
+                        j = 2;
                     }
-                    if (map[i][j] == 0){
+                    if (map[i][j] == 0) {
                         map[i][j] = nextPlayer;
                         DrawPane.this.repaint();
                         if (nextPlayer == 1) {
@@ -95,9 +96,9 @@ public class TickTackToeMain extends JFrame{
                             message = "Plyer #" + winner + " win! Would you like to play again?";
                         }
 
-                        int result = JOptionPane.showInternalConfirmDialog(DrawPane.this, message, "Play again?", 
+                        int result = JOptionPane.showInternalConfirmDialog(DrawPane.this, message, "Play again?",
                                 JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
-                        
+
                         if (result == JOptionPane.YES_OPTION) {
                             map = new int[3][3];
                             DrawPane.this.repaint();
@@ -109,21 +110,21 @@ public class TickTackToeMain extends JFrame{
         }
 
         @Override
-        public void paintComponent(Graphics g){            
+        public void paintComponent(Graphics g) {
             g.drawLine(0, getHeight() / 3, getWidth(), getHeight() / 3);
-            g.drawLine(0, getHeight() *2 / 3, getWidth(), getHeight() *2 / 3);
+            g.drawLine(0, getHeight() * 2 / 3, getWidth(), getHeight() * 2 / 3);
             g.drawLine(getWidth() / 3, 0, getWidth() / 3, getHeight());
             g.drawLine(getWidth() * 2 / 3, 0, getWidth() * 2 / 3, getHeight());
-            for (int i = 0; i < 3; i++){
+            for (int i = 0; i < 3; i++) {
                 for (int j = 0; j < 3; j++) {
-                    switch(map[i][j]) {
+                    switch (map[i][j]) {
                         case 1: {
                             int x = i * getWidth() / 3;
                             int y = j * getHeight() / 3;
                             g.drawOval(x, y, getWidth() / 3, getHeight() / 3);
                         }
                         break;
-                        case 2:{
+                        case 2: {
                             int x1 = i * getWidth() / 3;
                             int y1 = j * getHeight() / 3;
                             int x2 = x1 + getWidth() / 3;
@@ -144,7 +145,7 @@ public class TickTackToeMain extends JFrame{
         }
     }
 
-    public static void main(String args[]){
+    public static void main(String args[]) {
         new TickTackToeMain();
     }
 }
