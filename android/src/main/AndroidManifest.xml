@@ -16,6 +16,13 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity
+            android:name=".DrawActivity">
+        </activity>
+        <activity
+            android:name=".ButtonActivity">
+        </activity>
+
     </application>
 
 </manifest>

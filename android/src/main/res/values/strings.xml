@@ -1,3 +1,16 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Tick Tack Toe</string>
+    <string name="button_draw">Game with draw</string>
+    <string name="button_button">Game with buttons</string>
+    <string name="textViewTitle">Who will win?</string>
+    <string name="button00">00</string>
+    <string name="button01">01</string>
+    <string name="button02">02</string>
+    <string name="button10">10</string>
+    <string name="button11">11</string>
+    <string name="button12">12</string>
+    <string name="button20">20</string>
+    <string name="button21">21</string>
+    <string name="button22">22</string>
+    <string name="textViewButton">X</string>
 </resources>
